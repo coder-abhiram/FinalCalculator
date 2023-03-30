@@ -23,6 +23,8 @@ const LoveForm = () => {
   const submitData = async (event) => {
     event.preventDefault();
     const { firstName, lastName } = userData;
+    const fruits = Math.floor(Math.random() * 101);
+    setPercentage(fruits);
     fetch(
       "https://lovecal-d2f1d-default-rtdb.firebaseio.com/userDataRecords.json",
       {
