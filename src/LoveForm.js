@@ -23,21 +23,26 @@ const LoveForm = () => {
   const submitData = async (event) => {
     event.preventDefault();
     const { firstName, lastName } = userData;
-    const fruits = Math.floor(Math.random() * 101);
-    setPercentage(fruits);
-    fetch(
-      "https://lovecal-d2f1d-default-rtdb.firebaseio.com/userDataRecords.json",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-        }),
-      }
-    );
+
+    if (firstName !== "" && lastName !== "") {
+      const fruits = Math.floor(Math.random() * 101);
+      setPercentage(fruits);
+      fetch(
+        "https://lovecal-d2f1d-default-rtdb.firebaseio.com/userDataRecords.json",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+          }),
+        }
+      );
+    } else {
+      setPercentage(0);
+    }
   };
 
   const handleSubmit = (e) => {
